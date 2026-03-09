@@ -1,0 +1,168 @@
+h1{
+    text-align: center;
+    color: slateblue;
+    font-size: 50px;
+    padding: 20px;
+}
+
+body{
+    background-color: #e2a9f1;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.container{
+    max-width: 900px;
+    width: 90%;
+    margin: auto;
+}
+
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    margin: 120px 0;
+}
+
+.row.left{
+    justify-content: flex-start;
+}
+
+.row.right{
+    justify-content: flex-end;
+}
+
+
+img{
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+
+    opacity: 0;
+    transform: translateY(100px);
+    transition: 1s;
+}
+
+img.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.frame{
+    background: grey;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    display: inline-block;
+}
+
+.frame img{
+    display: block;
+}
+
+
+iframe{
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    object-fit: cover;
+
+}
+
+iframe.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.video-frame{
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    background: black;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.40);
+
+    aspect-ratio: 16 / 9;
+}
+
+.video-frame:hover{
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+}
+
+.video-frame iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.balloons{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.balloon{
+    position: absolute;
+    bottom: -150px;
+    width: 60px;
+    height: 80px;
+    background: red;
+    border-radius: 50%;
+    animation: floatUp 10s linear infinite;
+}
+
+.balloon:nth-child(1){ left:10%; background:#ff4d6d; animation-duration:8s;}
+.balloon:nth-child(2){ left:30%; background:#ffd166; animation-duration:10s;}
+.balloon:nth-child(3){ left:50%; background:#06d6a0; animation-duration:9s;}
+.balloon:nth-child(4){ left:70%; background:#118ab2; animation-duration:11s;}
+.balloon:nth-child(5){ left:90%; background:#ef476f; animation-duration:7s;}
+
+@keyframes floatUp{
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-120vh);
+    }
+}
+
+
+@media (max-width: 768px){
+
+    .video-frame{
+        padding: 6px;
+        border-radius: 10px;
+        max-width: 100%;
+    }
+
+    .video-frame iframe{
+        border-radius: 8px;
+    }
+    h1{
+        font-size: 32px;
+    }
+
+    .row{
+        flex-direction: column;
+        align-items: center;
+        margin: 60px 0;
+    }
+
+    img{
+        max-width: 100%;
+    }
+
+}
