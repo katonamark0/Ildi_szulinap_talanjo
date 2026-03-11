@@ -1,3 +1,8 @@
+window.onload = function() {
+    startParty();
+}
+
+
 const images = document.querySelectorAll('img');
 
 function reveal(){
@@ -8,49 +13,71 @@ function reveal(){
 
         if(top < trigger && top > 0){
             img.classList.add('show');
-        }
-        else{
+        } else {
             img.classList.remove('show');
         }
-    }); 
+    });
 }
 
 window.addEventListener('scroll', reveal);
 
-setInterval(() => {
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: {x: Math.random(), y: 0 }
-    });
-}, 800);
 
-const image = document.querySelectorAll('img, video');
+let confettiInterval;
+let fireworkInterval;
+
+
+function startParty(){
+
+    confettiInterval = setInterval(() => {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: {x: Math.random(), y: 0 }
+        });
+    }, 800);
+
+
+    fireworkInterval = setInterval(() => {
+
+        confetti({
+            particleCount: 50,
+            spread: 60,
+            origin: {x: 0}
+        });
+
+        confetti({
+            particleCount: 50,
+            spread: 120,
+            origin: {x: 1}
+        });
+
+        setTimeout(firework, 300);
+
+    }, 1500);
+}
 
 
 function firework(){
-    const count = 200;
-
     confetti({
-        particleCount: count,
+        particleCount: 200,
         spread: 160,
         origin: {x: 0.5, y: 0.5 }
     });
 }
 
-setInterval(() => {
-    
-confetti({
-    particleCount: 50,
-    spread: 60,
-    origin: {x: 0}
-});
 
-confetti({
-    particleCount: 50,
-    spread: 120,
-    origin: {x: 1}
-});
+function stopParty(){
+    clearInterval(confettiInterval);
+    clearInterval(fireworkInterval);
+}
 
-seltTimeout(firework, 300);
-}, 1500);
+
+function showImages(){
+    const div = document.getElementById('images');
+
+    if(div.style.display === 'none' || div.style.display === ''){
+        div.style.display = 'block';
+    } else {
+        div.style.display = 'none';
+    }
+}
